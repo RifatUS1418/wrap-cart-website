@@ -15,41 +15,62 @@ const showProducts = (products) => {
     const image = product.image;
     const div = document.createElement("div");
     div.classList.add("product");
-    div.innerHTML = `<div class="single-product">
+    div.innerHTML = `
+    <div class="single-product">
       <div>
-    <img class="product-image" src=${image}></img>
+        <img class="product-image" src=${image}></img>
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
-      <small>Rating count: ${product.rating.count}</small>;
+      <small>Rating count: ${product.rating.count}</small><br>
       <small>Rating rate: ${product.rating.rate}</small>
       <h2>Price: $ ${product.price}</h2>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <!-- Button trigger modal -->
-      <button onclick="showDetails(${product.id})" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Details</button>
-      <!-- Modal -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-          <div class="modal-body">
-              <h3>.....</h3>
+
+    <!-- Button trigger modal -->
+      <button onclick="loadDetail(${product.id})" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel"></h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="detail">
+            ...
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
           </div>
-          </div>
+        </div>
       </div>
+    
+    </div>
     </div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
 };
 
+const loadDetail = (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`
+  fetch(url)
+    .then(res => res.json())
+    .then(json => showDetail(json))
+}
+
+const showDetail = (detail) => {
+  console.log(detail);
+  const title = document.getElementById('exampleModalLabel');
+  title.innerText = `${detail.title}`
+  const div = document.getElementById('detail')
+  div.innerHTML = `
+      <img src="${detail.image}" width="200px">
+      <div><small class="text-danger fw-bold">${detail.category}</small></div>
+      <p>${detail.description}</p>
+  `
+};
 
 let count = 0;
 const addToCart = (id, price) => {
