@@ -6,6 +6,7 @@ const loadProducts = () => {
 };
 loadProducts();
 
+
 // show all product in UI 
 const showProducts = (products) => {
   console.log(products);
@@ -25,7 +26,7 @@ const showProducts = (products) => {
       <h2>Price: $ ${product.price}</h2>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Details</button>
+      <button onclick="showDetails(${product.id})" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Details</button>
       <!-- Modal -->
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -35,7 +36,7 @@ const showProducts = (products) => {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
           <div class="modal-body">
-        ...
+              <h3>.....</h3>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -48,8 +49,8 @@ const showProducts = (products) => {
     document.getElementById("all-products").appendChild(div);
   }
 };
-// Show details
-// const showDetails;
+
+
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
