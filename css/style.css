@@ -3,6 +3,8 @@ body {
   font-family: "Montserrat", sans-serif;
   padding: 10px;
 }
+
+/* head section style */
 .head{
   position: absolute;
   z-index: 1;
@@ -12,34 +14,9 @@ body {
   position: fixed;
   top: 0;
 }
-.symbol{
-  color: tomato;
-}
-.search-field {
-  border: none;
-  border-radius: 50px;
-  padding: 5px;
-  outline: none;
-}
-.search-field:hover {
-  outline: none;
-  border: none;
-}
-.search-box {
-  border: 1px solid rgb(3, 118, 211);
-  width: 281px;
-  border-radius: 5px;
-  margin: auto;
-  margin-top: 50px;
-  border-right: none;
-}
-/* .search-button {
-  padding: 10px 50px;
-  border-radius: 25px;
-  margin-left: 20px;
-  background-color: orange;
-} */
 
+
+/* main section style  */
 .main{
   position: relative;
   top: 30px;

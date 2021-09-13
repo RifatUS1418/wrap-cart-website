@@ -5,7 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ranga-Store</title>
+  <title>Wrap Cart</title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="image/favicon.png" type="image/x-icon">
+  <!-- custom css -->
   <link rel="stylesheet" href="./css/style.css" />
   <!-- Latest compiled and minified CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -18,22 +21,24 @@
 </head>
 
 <body>
+  <!-- Site Name and Search Field  -->
   <header class="head">
     <div class="container header">
       <div class="row">
-        <h1 class="col-3 pt-2 fw-bold ps-5"><span class="symbol">W</span>rap <span class="symbol">C</span>art</h1>
+        <h1 class="col-3 pt-2 fw-bold ps-5"><span class="text-danger">W</span>rap <span class="text-danger">C</span>art
+        </h1>
         <div class="col-9 search-field pt-3">
           <div class="input-group mb-3">
             <input type="text" id="input-field" class="form-control search-field" placeholder="search your products"
               aria-label=" " aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="search-btn"
-              onclick="loadProducts()">Search</button>
+            <button class="btn btn-danger" type="button" id="search-btn" onclick="loadProducts()">Search</button>
           </div>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- product and cart detail show in UI -->
   <main class="main mt-5">
     <div class="row">
       <div class="col-md-9 col-lg-9 col-sm-7">
@@ -41,6 +46,8 @@
 
         </div>
       </div>
+
+      <!-- cart detail  -->
       <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
         <div class="cart" id="my-cart">
           <table class="table">
@@ -86,17 +93,19 @@
             </tbody>
           </table>
           <div class="parces text-center">
-            <button class="btn btn-primary text-center">Buy Now</button>
+            <button class="btn btn-warning text-center">Buy Now</button>
           </div>
         </div>
       </div>
     </div>
   </main>
   <footer></footer>
+
   <!-- bootstrap script  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
+
   <!-- add javascript  file  -->
   <script src="./js/app.js"></script>
 </body>

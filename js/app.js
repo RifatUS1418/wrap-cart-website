@@ -25,34 +25,35 @@ const showProducts = (products) => {
       <small>Rating count: ${product.rating.count}</small><br>
       <small>Rating rate: ${product.rating.rate}</small>
       <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+      <button onclick="addToCart(${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
 
-    <!-- Button trigger modal -->
+      <!-- Button trigger modal -->
       <button onclick="loadDetail(${product.id})" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel"></h3>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="detail">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel"></h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="detail">
+            
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
           </div>
         </div>
       </div>
-    
-    </div>
     </div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
 };
 
+// Product detail load
 const loadDetail = (id) => {
   const url = `https://fakestoreapi.com/products/${id}`
   fetch(url)
@@ -60,6 +61,7 @@ const loadDetail = (id) => {
     .then(json => showDetail(json))
 }
 
+// product detail show
 const showDetail = (detail) => {
   console.log(detail);
   const title = document.getElementById('exampleModalLabel');
@@ -67,13 +69,16 @@ const showDetail = (detail) => {
   const div = document.getElementById('detail')
   div.innerHTML = `
       <img src="${detail.image}" width="200px">
-      <div><small class="text-danger fw-bold">${detail.category}</small></div>
+      <div>
+        <small class="text-danger fw-bold">${detail.category}</small>
+      </div>
       <p>${detail.description}</p>
   `
 };
 
+// add product in cart
 let count = 0;
-const addToCart = (id, price) => {
+const addToCart = (price) => {
   count = count + 1;
   updatePrice("price", price);
 
